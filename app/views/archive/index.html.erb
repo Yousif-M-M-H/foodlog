@@ -1,0 +1,55 @@
+<div class="columns is-centered">
+<div class="column is-half">
+<%= @entres.each do |day , entres|%>
+<h3 class="is-size-4 has-text-weight-bold mb-4">entries for <%= day %></h3>
+
+<nav class="level is-mobile">
+<div class="level-item has-text-center">
+<div>
+<p class="heading">calories</p>
+<p class="title"><%= entres.pluck(:calories).sum %></p>
+
+</div>
+</div>
+
+<div class="level-item has-text-center">
+<div>
+<p class="heading">protiens</p>
+<p class="title"><%= entres.pluck(:protiens).sum %>g</p>
+
+</div>
+</div>
+
+<div class="level-item has-text-center">
+<div>
+<p class="heading">carbohydrates</p>
+<p class="title"><%= entres.pluck(:carbohydrates).sum %>g</p>
+
+</div>
+</div>
+
+<div class="level-item has-text-center">
+<div>
+<p class="heading">fats</p>
+<p class="title"><%= entres.pluck(:fats).sum %>g</p>
+
+</div>
+</div>
+</nav>
+
+<% entres.each do |entre|%>
+<%= link_to entre_path(entre) do%>
+<div class="card">
+<div class="card-content">
+<strong><%= entre.meal_type%></strong><br/>
+<%= entre.calories%>calories
+<%= entre.protiens%>protiens
+<%= entre.carbohydrates%>carbohydrates
+<%= entre.fats%>fats
+</div>
+</div>
+<%end%>
+<%end%>
+<%end%>
+</div>
+</div>
